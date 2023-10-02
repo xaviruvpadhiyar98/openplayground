@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stream Example</title>
+    <style>
+        .hover-info {
+            display: none;
+            position: absolute;
+            background-color: white;
+            border: 1px solid black;
+            padding: 10px;
+        }
+    </style>
+</head>
+<body>
+
+<span contenteditable="true" id="message">Existing message.</span>
+<div class="hover-info" id="hoverInfo"></div>
+
+<script>
+    // Setting up an EventSource connection to the stream endpoint
+    const source = new EventSource("http://127.0.0.1:8000/stream");
+
+    source.onmessage = function(event) {
+        const data = JSON.parse(event.data);
+        
+        // Append "Filled" to the contenteditable span
+        const span = document.getElementById("message");
+        span.innerHTML += ' <span class="hover-trigger">Filled</span>';
+
+        // Attach hover event to the "Filled" word to display other data
+        const hoverTrigger = document.querySelector(".hover-trigger");
+        const hoverInfo = document.getElementById("hoverInfo");
+        
+        hoverTrigger.addEventListener("mouseover", (e) => {
+            let content = "";
+            for (const key in data) {
+                if (key !== "filled") {
+                    content += `${key}: ${data[key]}%<br>`;
+                }
+            }
+            hoverInfo.innerHTML = content;
+            hoverInfo.style.top = (e.clientY + 10) + "px";
+            hoverInfo.style.left = (e.clientX + 10) + "px";
+            hoverInfo.style.display = "block";
+        });
+
+        hoverTrigger.addEventListener("mouseout", () => {
+            hoverInfo.style.display = "none";
+        });
+    };
+</script>
+
+</body>
+</html>

@@ -1,0 +1,156 @@
+<div class="flex flex-grow border justify-between space-x-2">
+  <span
+    class="w-full rounded-lg shadow-lg m-2 p-2 bg-transparent border focus:outline-none"
+    contenteditable="true"
+    id="content"
+    name="content"
+  >
+    <span name="contentText">Once upon a time,</span>
+
+    <!-- <textarea
+      class="rounded-lg shadow-lg m-2 p-2 bg-transparent border h-[calc(100vh-8vh)] w-full"
+      name="textarea"
+      id="textarea"
+      placeholder=""
+    >Once upon a time, </textarea> -->
+    </span>
+
+  <div class="flex flex-col justify-between h-[calc(100vh-8vh)] p-2 m-1">
+    <div class="space-y-4">
+      <div class="">
+        <label for="models" class="sr-only">Model:</label>
+        <select
+          name="models"
+          id="models"
+          class="block py-2.5 px-0 w-full text-sm bg-transparent border-0 border-b-2 border-gray-200 appearance-none focus:outline-none focus:ring-0 focus:border-gray-200 peer"
+        >
+          <option selected="gpt2">gpt2</option>
+          <option value="gpt2">gpt3</option>
+        </select>
+      </div>
+      <div class="">
+        <span class="text-sm">Maximum Length: </span>
+        <span class="text-sm">100</span>
+        <input
+          name="maximumLength"
+          id="maximumLength"
+          class="w-full primary-100"
+          type="range"
+          value="4"
+          min="4"
+          max="100"
+          oninput="this.previousElementSibling.innerText=this.value"
+        />
+        <div class="-mt-2 flex w-full justify-between">
+          <span class="text-sm text-gray-600">4</span>
+          <span class="text-sm text-gray-600">100</span>
+        </div>
+      </div>
+      <div class="">
+        <span class="text-sm">Temperature: </span>
+        <span class="text-sm">0.6</span>
+        <input
+          name="temperature"
+          id="temperature"
+          class="w-full primary-100"
+          type="range"
+          value="0.6"
+          min="0.1"
+          max="1"
+          step="0.01"
+          oninput="this.previousElementSibling.innerText=this.value"
+        />
+        <div class="-mt-2 flex w-full justify-between">
+          <span class="text-sm text-gray-600">0</span>
+          <span class="text-sm text-gray-600">1</span>
+        </div>
+      </div>
+      <div class="">
+        <span class="text-sm">Top P: </span>
+        <span class="text-sm">0.6</span>
+        <input
+          name="topP"
+          id="topP"
+          class="w-full primary-100"
+          type="range"
+          value="0.6"
+          min="0.1"
+          max="1"
+          step="0.01"
+          oninput="this.previousElementSibling.innerText=this.value"
+        />
+        <div class="-mt-2 flex w-full justify-between">
+          <span class="text-sm text-gray-600">0</span>
+          <span class="text-sm text-gray-600">1</span>
+        </div>
+      </div>
+      <div class="">
+        <span class="text-sm">Top K: </span>
+        <span class="text-sm">50</span>
+        <input
+          name="topK"
+          id="topK"
+          class="w-full primary-100"
+          type="range"
+          value="50"
+          min="10"
+          max="500"
+          step="1"
+          oninput="this.previousElementSibling.innerText=this.value"
+        />
+        <div class="-mt-2 flex w-full justify-between">
+          <span class="text-sm text-gray-600">10</span>
+          <span class="text-sm text-gray-600">500</span>
+        </div>
+      </div>
+      <div class="">
+        <span class="text-sm">Repetition Penalty: </span>
+        <span class="text-sm">1.2</span>
+        <input
+          name="repetitionPenalty"
+          id="repetitionPenalty"
+          class="w-full primary-100"
+          type="range"
+          value="1.2"
+          min="0.1"
+          max="2"
+          step="0.01"
+          oninput="this.previousElementSibling.innerText=this.value"
+        />
+        <div class="-mt-2 flex w-full justify-between">
+          <span class="text-sm text-gray-600">0</span>
+          <span class="text-sm text-gray-600">2</span>
+        </div>
+      </div>
+    </div>
+    <div class="">
+      <div
+        class="flex flex-col space-y-6 justify-between items-center p-2 m-1 pb-0 mb-0"
+      >
+        <div>
+          <button
+          onclick="stream()"
+            class="w-32 px-5 py-2.5 text-sm font-medium rounded-lg text-center text-white bg-primary-500 hover:bg-primary-700"
+          >
+            Submit
+          </button>
+        </div>
+        <div>
+          <button
+          onclick="reset()"
+            class="w-32 px-5 py-2.5 text-sm font-medium rounded-lg text-center text-white bg-primary-500 hover:bg-primary-700""
+          >
+            Reset
+          </button>
+        </div>
+        <!-- <div>
+          <button
+            class="w-32 px-5 py-2.5 text-sm font-medium text-white bg-blue-700 hover:bg-blue-800 rounded-lg text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+          >
+            Regenerate
+          </button>
+        </div> -->
+      </div>
+    </div>
+  </div>
+</div>
